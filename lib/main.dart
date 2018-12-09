@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'shared/stacked_logo.dart';
+import 'shared/expanded_container_button.dart';
+import 'screens/login_screen.dart';
 
 void main() => runApp(PostIt());
 
@@ -36,10 +38,56 @@ class HomePage extends StatelessWidget {
                   Text('POSTIT', style: TextStyle(fontSize: 30.0))
                 ],
               ),
+            ),
+            SizedBox(
+              height: 60.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: GestureDetector(
+                      onTap: () => _navigateToLoginScreen(context),
+                      child: ExpandedContainerButton(
+                        height: 50.0,
+                        backgroundColor: Color(0xFF00BFA5),
+                        borderRadius: 5.0,
+                        text: "Login",
+                        fontSize: 20.0,
+                        textColor: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: ExpandedContainerButton(
+                      height: 50.0,
+                      backgroundColor: Color(0xFF00BFA5),
+                      borderRadius: 5.0,
+                      text: "Sign Up",
+                      fontSize: 20.0,
+                      textColor: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             )
           ],
         ),
       ),
     );
+  }
+
+  void _navigateToLoginScreen(context) {
+    // Navigator.of(context).push(MaterialPageRoute(
+    //   builder: (context) => LoginScreen(),
+    // ));
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) => LoginScreen(),
+    ));
   }
 }
