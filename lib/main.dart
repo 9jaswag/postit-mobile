@@ -13,6 +13,7 @@ class PostIt extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'PostIT',
       theme: ThemeData(
+        fontFamily: 'Josefin Sans',
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),
@@ -35,7 +36,7 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('POSTIT', style: TextStyle(fontSize: 30.0))
+                  Text('POSTIT', style: TextStyle(fontSize: 30.0,)),
                 ],
               ),
             ),
