@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:postit/shared/stacked_logo.dart';
 import 'package:postit/shared/expanded_container_button.dart';
 import 'package:postit/utils/api.dart';
+import 'package:postit/utils/local_storage.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -28,14 +29,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _signInUser() async {
     final api = Api();
+    final localStorage = LocalStorage();
     final userDetail = await api.signIn(
         _usernameController.text.trim(), _passwordController.text.trim());
 
     if (userDetail != null) {
       if (userDetail['success']) {
-        setState(() {
-          userToken = userDetail['token'];
-        });
+        localStorage.storeToken(userToken, userDetail['token']);
       } else {
         // display error
       }
