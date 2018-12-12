@@ -137,6 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
+      resizeToAvoidBottomPadding: false, // removes the overflow issue on the input field:active
     );
   }
 }
