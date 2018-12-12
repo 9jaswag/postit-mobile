@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:postit/shared/stacked_logo.dart';
+import 'package:postit/shared/logo.dart';
 import 'package:postit/shared/expanded_container_button.dart';
 import 'package:postit/utils/api.dart';
 import 'package:postit/utils/local_storage.dart';
@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (userDetail != null) {
       if (userDetail['success']) {
-        localStorage.storeToken(userToken, userDetail['token']);
+        localStorage.storeToken('userToken', userDetail['token']);
       } else {
         // display error
       }
@@ -54,16 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
         width: double.infinity,
         child: Column(
           children: <Widget>[
-            StackedLogo(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('POSTIT', style: TextStyle(fontSize: 30.0))
-                ],
-              ),
-            ),
+            Logo(),
             SizedBox(
               height: 50.0,
             ),
@@ -137,7 +128,8 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
-      resizeToAvoidBottomPadding: false, // removes the overflow issue on the input field:active
+      resizeToAvoidBottomPadding:
+          false, // removes the overflow issue on the input field:active
     );
   }
 }
