@@ -30,7 +30,13 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Logo(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Logo(),
+            CircularProgressIndicator()
+          ],
+        ),
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:postit/shared/logo.dart';
 import 'package:postit/shared/expanded_container_button.dart';
 import 'package:postit/utils/api.dart';
 import 'package:postit/utils/local_storage.dart';
+import 'package:postit/shared/display_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -38,7 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
         localStorage.storeToken('userToken', userDetail['token']);
         Navigator.of(context).pushReplacementNamed('/DashboardScreen');
       } else {
-        // display error
+        DisplayDialog(
+            context,
+            'Error',
+            'Login failed. Ensure your details are correct and try again!',
+            'Close');
       }
     }
   }
