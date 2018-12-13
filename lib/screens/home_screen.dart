@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:postit/shared/logo.dart';
 import 'package:postit/shared/expanded_container_button.dart';
-import 'package:postit/utils/local_storage.dart';
 import 'login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -58,18 +57,14 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  String _isAuthenticated(){
-    final localStorage = LocalStorage();
-    var token = localStorage.readToken('userToken');
-    print(token);
-  }
-
   void _navigateToLoginScreen(context) {
     // Navigator.of(context).push(MaterialPageRoute(
     //   builder: (context) => LoginScreen(),
     // ));
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context) => LoginScreen(),
-    ));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginScreen(),
+        ));
   }
 }

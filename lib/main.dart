@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'screens/home_screen.dart';
+import 'screens/root_screen.dart';
 import 'screens/splash_screen.dart';
+import 'screens/dashboard_screen.dart';
 
 void main() => runApp(PostIt());
 
@@ -12,7 +13,8 @@ class PostIt extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'PostIT',
       routes: <String, WidgetBuilder>{
-        "/HomeScreen": (BuildContext context) => HomeScreen(),
+        "/RootScreen": (BuildContext context) => RootScreen(),
+        "/DashboardScreen": (BuildContext context) => DashboardScreen(),
       },
       theme: ThemeData(
         fontFamily: 'Josefin Sans',

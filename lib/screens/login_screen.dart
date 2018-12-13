@@ -36,6 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (userDetail != null) {
       if (userDetail['success']) {
         localStorage.storeToken('userToken', userDetail['token']);
+        Navigator.of(context).pushReplacementNamed('/DashboardScreen');
       } else {
         // display error
       }

@@ -14,8 +14,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   startTime() async {
     return Timer(Duration(seconds: splashDuration), () {
-      SystemChannels.textInput.invokeMethod('TextInput.hide'); // force the soft keyboard to hide, in case some other method or app has left it open
-      Navigator.of(context).pushReplacementNamed('/HomeScreen');
+      SystemChannels.textInput.invokeMethod(
+          'TextInput.hide'); // force the soft keyboard to hide, in case some other method or app has left it open
+      Navigator.of(context).pushReplacementNamed('/RootScreen');
     });
   }
 
