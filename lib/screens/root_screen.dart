@@ -22,17 +22,19 @@ class _RootScreenState extends State<RootScreen> {
   void _isAuthenticated() {
     final localStorage = LocalStorage();
     var userToken = localStorage.readToken('userToken');
-    userToken.then((response) {
-      if (userToken != null) {
-        var decodedToken = parseJwt(response);
-        localStorage.storeToken('userId', decodedToken['id']);
-        localStorage.storeToken('userEmail', decodedToken['email']);
-        localStorage.storeToken('userName', decodedToken['username']);
-        setState(() {
-          _token = response;
-        });
-      }
-    });
+    if (userToken != null) {
+      userToken.then((response) {
+        if (response != null) {
+          var decodedToken = parseJwt(response);
+          localStorage.storeToken('userId', decodedToken['id'].toString());
+          localStorage.storeToken('userEmail', decodedToken['email']);
+          localStorage.storeToken('userName', decodedToken['username']);
+          setState(() {
+            _token = response;
+          });
+        }
+      });
+    }
   }
 
   @override
