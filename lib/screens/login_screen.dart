@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        iconTheme: IconThemeData(color: Color(0xFF00bfa5)),
+        iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
       ),
       body: Container(
         width: double.infinity,
@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () => _signInUser(),
                       child: ExpandedContainerButton(
                         height: 50.0,
-                        backgroundColor: Color(0xFF00BFA5),
+                        backgroundColor: Theme.of(context).primaryColor,
                         borderRadius: 5.0,
                         text: "Login",
                         fontSize: 20.0,
@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: 5.0,
                       text: "Forgot Password?",
                       fontSize: 20.0,
-                      textColor: Color(0xFF00BFA5),
+                      textColor: Theme.of(context).primaryColor,
                     ),
                   ),
                 )
@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Create a new account.',
                       style:
-                          TextStyle(fontSize: 20.0, color: Color(0xFF00BFA5)),
+                          TextStyle(fontSize: 20.0, color: Theme.of(context).primaryColor),
                     ),
                   )
                 ],

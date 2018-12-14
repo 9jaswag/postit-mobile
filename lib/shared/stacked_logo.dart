@@ -9,7 +9,7 @@ class StackedLogo extends StatelessWidget {
       alignment: Alignment.center,
       children: <Widget>[
         CircularIcon(
-          backgroundColor: Color(0xFF45E0EC),
+          backgroundColor: Color(0xFF40376E),
           icon: Icons.email,
           iconColor: Colors.white,
           marginBottom: 0,
@@ -18,7 +18,7 @@ class StackedLogo extends StatelessWidget {
           marginLeft: 0,
         ),
         CircularIcon(
-          backgroundColor: Color(0xFF00BFA5), //(#00bfa5)
+          backgroundColor: Color(0xFF48233C), //(#00bfa5)
           icon: Icons.chat,
           iconColor: Colors.white,
           marginBottom: 0,
@@ -27,7 +27,7 @@ class StackedLogo extends StatelessWidget {
           marginLeft: 0,
         ),
         CircularIcon(
-          backgroundColor: Color(0xFFFFCE56),
+          backgroundColor: Color(0xFF36558F),
           icon: Icons.alternate_email,
           iconColor: Colors.white,
           marginBottom: 0,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:postit/utils/logout.dart';
+import 'package:postit/shared/custom_card.dart';
+import 'package:postit/utils/api.dart';
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -10,13 +12,35 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   int _bottomNavigationIndex = 0;
+  List<dynamic> _groups = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadGroups();
+  }
+
+  void _loadGroups() async {
+    final api = Api();
+    var response = await api.fetchUserGroups();
+    if (response != null) {
+      if (response['success']) {
+        setState(() {
+          _groups = response['groups'];
+        });
+      } else {
+        // error
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          'DashboardScreen',
+          'Dashboard',
           style: TextStyle(
             color: Colors.white,
           ),
@@ -34,14 +58,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ],
       ),
       bottomNavigationBar: _buildBottomNavigationBar(context),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).primaryColor,
-        child: Icon(Icons.add),
-        tooltip: 'Create New Group',
-        onPressed: () {
-          print('pressed');
-        },
-      ),
+      floatingActionButton: _buildFloatingActionButton(context),
+      body: _dashboardScreenBody(),
+    );
+  }
+
+  Widget _dashboardScreenBody() {
+    return ListView.builder(
+      itemCount: _groups.length,
+      itemBuilder: (BuildContext context, int index) {
+        var group = _groups[index]['group'];
+        return CustomCard(group['name'], group['description']);
+      },
+    );
+  }
+
+  FloatingActionButton _buildFloatingActionButton(BuildContext context) {
+    return FloatingActionButton(
+      backgroundColor: Theme.of(context).primaryColor,
+      child: Icon(Icons.add),
+      tooltip: 'Create New Group',
+      onPressed: () {
+        print('pressed');
+      },
     );
   }
 
@@ -50,7 +89,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       return CupertinoTabBar(
         currentIndex: _bottomNavigationIndex,
         activeColor: Theme.of(context).primaryColor,
-        onTap: setNavIndex,
+        onTap: _setNavIndex,
         items: bottomNavBarItems(),
       );
     }
@@ -59,12 +98,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
       type: BottomNavigationBarType.fixed,
       fixedColor: Theme.of(context).primaryColor,
       currentIndex: _bottomNavigationIndex,
-      onTap: setNavIndex,
+      onTap: _setNavIndex,
       items: bottomNavBarItems(),
     );
   }
 
-  void setNavIndex(int index) {
+  void _setNavIndex(int index) {
     setState(() {
       _bottomNavigationIndex = index;
     });

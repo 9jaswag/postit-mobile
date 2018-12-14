@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                       onTap: () => _navigateToLoginScreen(context),
                       child: ExpandedContainerButton(
                         height: 50.0,
-                        backgroundColor: Color(0xFF00BFA5),
+                        backgroundColor: Theme.of(context).primaryColor,
                         borderRadius: 5.0,
                         text: "Login",
                         fontSize: 20.0,
@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                     padding: EdgeInsets.all(20.0),
                     child: ExpandedContainerButton(
                       height: 50.0,
-                      backgroundColor: Color(0xFF00BFA5),
+                      backgroundColor: Color(0xFF48233C),
                       borderRadius: 5.0,
                       text: "Sign Up",
                       fontSize: 20.0,

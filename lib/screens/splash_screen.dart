@@ -34,7 +34,6 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Logo(),
-            CircularProgressIndicator()
           ],
         ),
       ),

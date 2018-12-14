@@ -17,6 +17,8 @@ class Logo extends StatelessWidget {
               Text('POSTIT',
                   style: TextStyle(
                     fontSize: 30.0,
+                    color: Color(0xFF36558F),
+                    fontWeight: FontWeight.w700
                   )),
             ],
           ),
