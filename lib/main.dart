@@ -17,6 +17,7 @@ class PostIt extends StatelessWidget {
         "/DashboardScreen": (BuildContext context) => DashboardScreen(),
       },
       theme: ThemeData(
+        primaryColor: Color(0xFF00BFA5),
         fontFamily: 'Josefin Sans',
         primarySwatch: Colors.blue,
       ),

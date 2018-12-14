@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http; // requires dart:io to work
 
 /// The REST API retrieves data from the hosted PostIT endpoint
 class Api {
-  // final HttpClient _httpClient = HttpClient();
   final String _url = 'https://postiit.herokuapp.com';
 
   /// Returns a user's detail.
