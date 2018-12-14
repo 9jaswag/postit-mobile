@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'screens/root_screen.dart';
 import 'screens/splash_screen.dart';
-import 'screens/dashboard_screen.dart';
+import 'screens/tab_screen.dart';
 
 void main() => runApp(PostIt());
 
@@ -14,7 +14,7 @@ class PostIt extends StatelessWidget {
       title: 'PostIT',
       routes: <String, WidgetBuilder>{
         "/RootScreen": (BuildContext context) => RootScreen(),
-        "/DashboardScreen": (BuildContext context) => DashboardScreen(),
+        "/TabScreen": (BuildContext context) => TabScreen(),
       },
       theme: ThemeData(
         primaryColor: Color(0xFF36558F),

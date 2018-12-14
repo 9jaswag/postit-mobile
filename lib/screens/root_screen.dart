@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:postit/utils/local_storage.dart';
 import 'package:postit/utils/parse_jwt.dart';
-import 'dashboard_screen.dart';
+import 'tab_screen.dart';
 import 'home_screen.dart';
 
 class RootScreen extends StatefulWidget {
@@ -37,7 +37,7 @@ class _RootScreenState extends State<RootScreen> {
   Widget build(BuildContext context) {
     if (_token != null) {
       return Container(
-        child: DashboardScreen(),
+        child: TabScreen(),
       );
     } else {
       return Container(
