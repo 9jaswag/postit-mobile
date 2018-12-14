@@ -30,7 +30,7 @@ class CustomCard extends StatelessWidget {
         radius: 45.0,
         child: Icon(
           Icons.group,
-          color: Color(0xFF48233C),
+          color: Colors.white,
         ),
       ),
     );
@@ -64,17 +64,17 @@ class CustomCard extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 18.0,
                     fontWeight: FontWeight.w600)),
+            Container(
+                margin: EdgeInsets.symmetric(vertical: 8.0),
+                height: 2.0,
+                width: 18.0,
+                color: Color(0xff00c6ff)),
             Container(height: 10.0),
             Text(_groupDesc,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 12.0,
                     fontWeight: FontWeight.w400)),
-            Container(
-                margin: EdgeInsets.symmetric(vertical: 8.0),
-                height: 2.0,
-                width: 18.0,
-                color: Color(0xff00c6ff)),
           ],
         ),
       ),

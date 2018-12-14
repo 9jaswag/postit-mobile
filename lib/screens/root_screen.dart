@@ -19,20 +19,16 @@ class _RootScreenState extends State<RootScreen> {
     _isAuthenticated();
   }
 
-  void _isAuthenticated() {
+  void _isAuthenticated() async {
     final localStorage = LocalStorage();
-    var userToken = localStorage.readToken('userToken');
+    var userToken = await localStorage.readToken('userToken');
     if (userToken != null) {
-      userToken.then((response) {
-        if (response != null) {
-          var decodedToken = parseJwt(response);
-          localStorage.storeToken('userId', decodedToken['id'].toString());
-          localStorage.storeToken('userEmail', decodedToken['email']);
-          localStorage.storeToken('userName', decodedToken['username']);
-          setState(() {
-            _token = response;
-          });
-        }
+      Map<String, dynamic> decodedToken = parseJwt(userToken);
+      localStorage.storeToken('userId', decodedToken['id'].toString());
+      localStorage.storeToken('userEmail', decodedToken['email']);
+      localStorage.storeToken('userName', decodedToken['username']);
+      setState(() {
+        _token = userToken;
       });
     }
   }

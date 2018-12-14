@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:postit/utils/logout.dart';
 import 'package:postit/shared/custom_card.dart';
 import 'package:postit/utils/api.dart';
+import 'login_screen.dart';
+import 'package:postit/utils/local_storage.dart';
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -22,15 +24,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   void _loadGroups() async {
     final api = Api();
-    var response = await api.fetchUserGroups();
-    if (response != null) {
-      if (response['success']) {
-        setState(() {
-          _groups = response['groups'];
-        });
-      } else {
-        // error
-      }
+    Map response = await api.fetchUserGroups();
+    if (response != null &&
+        response.containsKey('success') &&
+        response['success']) {
+      setState(() {
+        _groups = response['groups'];
+      });
+    } else {
+      //error
+      LocalStorage().deleteToken('userToken');
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (BuildContext context) => LoginScreen()));
     }
   }
 

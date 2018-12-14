@@ -33,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
     final localStorage = LocalStorage();
     final userDetail = await api.signIn(
         _usernameController.text.trim(), _passwordController.text.trim());
-
     if (userDetail != null) {
       if (userDetail['success']) {
         localStorage.storeToken('userToken', userDetail['token']);
@@ -124,8 +123,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.only(bottom: 50.0),
                     child: Text(
                       'Create a new account.',
-                      style:
-                          TextStyle(fontSize: 20.0, color: Theme.of(context).primaryColor),
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Theme.of(context).primaryColor),
                     ),
                   )
                 ],
