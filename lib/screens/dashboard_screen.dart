@@ -43,7 +43,7 @@ class DashboardScreen extends StatelessWidget {
       itemCount: groups.length,
       itemBuilder: (BuildContext context, int index) {
         var group = groups[index]['group'];
-        return CustomCard(group['name'], group['description']);
+        return CustomCard(group['name'], group['description'], groups[index]['unreadCount']);
       },
     );
   }

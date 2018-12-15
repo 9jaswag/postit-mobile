@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class CustomCard extends StatelessWidget {
   final String _groupName;
   final String _groupDesc;
+  final int _unreadCount;
 
-  const CustomCard(this._groupName, this._groupDesc);
+  const CustomCard(this._groupName, this._groupDesc, this._unreadCount);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class CustomCard extends StatelessWidget {
 
   Container stackedThumbnail() {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 16.0),
+      margin: EdgeInsets.symmetric(vertical: 27.0),
       alignment: FractionalOffset.centerLeft,
       child: CircleAvatar(
         radius: 45.0,
@@ -38,7 +39,7 @@ class CustomCard extends StatelessWidget {
 
   Container stackedCard(BuildContext context) {
     return Container(
-      height: 124.0,
+      height: 150.0,
       margin: EdgeInsets.only(left: 46.0),
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor, //Color(0xFF333366)
@@ -53,7 +54,7 @@ class CustomCard extends StatelessWidget {
         ],
       ),
       child: Container(
-        margin: EdgeInsets.fromLTRB(76.0, 16.0, 16.0, 16.0),
+        margin: EdgeInsets.fromLTRB(55.0, 16.0, 16.0, 10.0),
         constraints: BoxConstraints.expand(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,9 +68,23 @@ class CustomCard extends StatelessWidget {
                 color: Color(0xff00c6ff)),
             Container(height: 10.0),
             Text(_groupDesc, style: Theme.of(context).textTheme.title),
+            unreadCount(context),
           ],
         ),
       ),
     );
+  }
+
+  Widget unreadCount(context) {
+    if (_unreadCount > 0) {
+      return Chip(
+        avatar: CircleAvatar(
+          backgroundColor: Colors.grey.shade800,
+          child: Text(_unreadCount.toString()),
+        ),
+        label: Text('unread'),
+      );
+    }
+    return Text('');
   }
 }
