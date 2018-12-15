@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:postit/utils/api.dart';
 import 'package:postit/shared/message_card.dart';
+import 'message_detail_screen.dart';
 
 class GroupScreen extends StatefulWidget {
   final int id;
@@ -44,9 +45,16 @@ class _GroupScreenState extends State<GroupScreen> {
       body: ListView.builder(
         itemCount: _groupMessages.length,
         itemBuilder: (BuildContext context, int index) {
-          return MessageCard(_groupMessages[index]);
+          return GestureDetector(
+              onTap: () => _navigateToMessageDetail(_groupMessages[index]),
+              child: MessageCard(_groupMessages[index]));
         },
       ),
     );
+  }
+
+  void _navigateToMessageDetail(message) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => MessageDetailScreen(message: message)));
   }
 }

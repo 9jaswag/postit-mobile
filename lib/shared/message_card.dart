@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:postit/utils/priority_color.dart';
 
 class MessageCard extends StatelessWidget {
   final Map message;
@@ -33,7 +34,7 @@ class MessageCard extends StatelessWidget {
             subtitle: Row(
               children: <Widget>[
                 Icon(Icons.linear_scale,
-                    color: _priorityColor(message["priority"])),
+                    color: priorityColor(message["priority"])),
                 Text(" " + message["priority"],
                     style: TextStyle(color: Colors.white))
               ],
@@ -42,18 +43,5 @@ class MessageCard extends StatelessWidget {
                 color: Colors.white, size: 30.0)),
       ),
     );
-  }
-
-  _priorityColor(priority) {
-    switch (priority) {
-      case 'critical':
-        return Colors.redAccent;
-        break;
-      case 'urgent':
-        return Colors.yellowAccent;
-        break;
-      default:
-        return Colors.greenAccent;
-    }
   }
 }
