@@ -20,6 +20,11 @@ class PostIt extends StatelessWidget {
         primaryColor: Color(0xFF36558F),
         fontFamily: 'Josefin Sans',
         primarySwatch: Colors.blue,
+        textTheme: TextTheme(
+          headline: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white),
+          title: TextStyle(fontSize: 15.0, fontStyle: FontStyle.italic, fontWeight: FontWeight.w300, color: Colors.white),
+          body1: TextStyle(fontSize: 12.0),
+        ),
       ),
       home: SplashScreen(),
     );

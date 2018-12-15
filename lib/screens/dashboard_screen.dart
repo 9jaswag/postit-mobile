@@ -50,7 +50,7 @@ class DashboardScreen extends StatelessWidget {
 
   FloatingActionButton _buildFloatingActionButton(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).primaryColorDark,
       child: Icon(Icons.add),
       tooltip: 'Create New Group',
       onPressed: () {
