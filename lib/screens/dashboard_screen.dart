@@ -5,6 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:postit/utils/logout.dart';
 import 'package:postit/shared/custom_card.dart';
 import 'group_screen.dart';
+import 'new_group_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   final List<dynamic> groups;
@@ -57,16 +58,19 @@ class DashboardScreen extends StatelessWidget {
   FloatingActionButton _buildFloatingActionButton(BuildContext context) {
     return FloatingActionButton(
       backgroundColor: Theme.of(context).primaryColorDark,
-      child: Icon(Icons.add),
+      child: Icon(Icons.group_add),
       tooltip: 'Create New Group',
-      onPressed: () {
-        print('pressed');
-      },
+      onPressed: () => _navigateToCreateGroup(context),
     );
   }
 
   void _navigateToGroup(BuildContext context, int id, String name) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => GroupScreen(id: id, name: name)));
+  }
+
+  void _navigateToCreateGroup(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => NewGroupScreen()));
   }
 }
