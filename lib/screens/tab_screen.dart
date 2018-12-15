@@ -21,6 +21,8 @@ class _TabScreenState extends State<TabScreen> {
   List<Widget> pages;
   Widget currentPgae;
 
+  final Key dashboardKey = PageStorageKey('pageOne');
+
   @override
   void initState() {
     super.initState();
@@ -48,6 +50,7 @@ class _TabScreenState extends State<TabScreen> {
   void _instantiatePages() {
     pageOne = DashboardScreen(
       groups: _groups,
+      key: dashboardKey,
     );
     pageTwo = SearchScreen();
 

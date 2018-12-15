@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  final String _groupName;
-  final String _groupDesc;
-  final int _unreadCount;
+  final String groupName;
+  final String groupDesc;
+  final int unreadCount;
 
-  const CustomCard(this._groupName, this._groupDesc, this._unreadCount);
+  const CustomCard({Key key, this.groupName, this.groupDesc, this.unreadCount})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,27 +61,27 @@ class CustomCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(height: 4.0),
-            Text(_groupName, style: Theme.of(context).textTheme.headline),
+            Text(groupName, style: Theme.of(context).textTheme.headline),
             Container(
                 margin: EdgeInsets.symmetric(vertical: 8.0),
                 height: 2.0,
                 width: 18.0,
                 color: Color(0xff00c6ff)),
             Container(height: 10.0),
-            Text(_groupDesc, style: Theme.of(context).textTheme.title),
-            unreadCount(context),
+            Text(groupDesc, style: Theme.of(context).textTheme.title),
+            unreadMessageCount(context),
           ],
         ),
       ),
     );
   }
 
-  Widget unreadCount(context) {
-    if (_unreadCount > 0) {
+  Widget unreadMessageCount(context) {
+    if (unreadCount > 0) {
       return Chip(
         avatar: CircleAvatar(
           backgroundColor: Colors.grey.shade800,
-          child: Text(_unreadCount.toString()),
+          child: Text(unreadCount.toString()),
         ),
         label: Text('unread'),
       );

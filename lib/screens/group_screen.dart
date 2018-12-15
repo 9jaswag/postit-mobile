@@ -8,7 +8,7 @@ class GroupScreen extends StatefulWidget {
   final int id;
   final String name;
 
-  GroupScreen(this.id, this.name);
+  GroupScreen({Key key, this.id, this.name}) : super(key: key);
 
   @override
   _GroupScreenState createState() => _GroupScreenState();

@@ -9,7 +9,7 @@ import 'group_screen.dart';
 class DashboardScreen extends StatelessWidget {
   final List<dynamic> groups;
 
-  DashboardScreen({@required this.groups});
+  DashboardScreen({Key key, @required this.groups}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +46,10 @@ class DashboardScreen extends StatelessWidget {
         var group = groups[index]['group'];
         return GestureDetector(
             onTap: () => _navigateToGroup(context, group['id'], group['name']),
-            child: CustomCard(group['name'], group['description'],
-                groups[index]['unreadCount']));
+            child: CustomCard(
+                groupName: group['name'],
+                groupDesc: group['description'],
+                unreadCount: groups[index]['unreadCount']));
       },
     );
   }
@@ -64,7 +66,7 @@ class DashboardScreen extends StatelessWidget {
   }
 
   void _navigateToGroup(BuildContext context, int id, String name) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => GroupScreen(id, name)));
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => GroupScreen(id: id, name: name)));
   }
 }
