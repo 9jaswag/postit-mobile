@@ -40,7 +40,7 @@ class _GroupScreenState extends State<GroupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.name),
+        title: Text(widget.name + ' Messages'),
       ),
       body: ListView.builder(
         itemCount: _groupMessages.length,
@@ -49,6 +49,11 @@ class _GroupScreenState extends State<GroupScreen> {
               onTap: () => _navigateToMessageDetail(_groupMessages[index]),
               child: MessageCard(_groupMessages[index]));
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add_to_photos),
+        onPressed: null,
+        tooltip: 'Post new message',
       ),
     );
   }

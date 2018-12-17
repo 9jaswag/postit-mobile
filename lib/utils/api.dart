@@ -40,6 +40,15 @@ class Api {
     return response;
   }
 
+  Future<Map> findUsers({username = '', limit = 5, offset = 0}) async {
+    final url =
+        '$_url/api/v1/user/search?username=$username&limit=$limit&offset=$offset';
+    var token = await getUserToken();
+    final headers = {'x-access-token': token, 'Accept': 'text/plain'};
+    final response = await _getJson(url, headers);
+    return response;
+  }
+
   /// Fetches and returns a JSON object represented as a Dart [String].
   ///
   /// Returns null if the API server is down, or the response is not JSON.
