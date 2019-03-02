@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:postit/shared/logo.dart';
@@ -38,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
         localStorage.storeToken('userToken', userDetail['token']);
         Navigator.of(context).pushReplacementNamed('/TabScreen');
       } else {
-        DisplayDialog(
+        displayDialog(
             context,
             'Error',
             'Login failed. Ensure your details are correct and try again!',

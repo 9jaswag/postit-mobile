@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-void DisplayDialog(
+void displayDialog(
     BuildContext context, String title, String message, String buttonLabel) {
   showDialog(
       context: context,
